@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tds calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+h2,#calculated {
+    text-align: center;
+    margin-bottom: 15px;
+    color: green;
+}
+
+img {
+width: 150px;
+    border-radius: 100%;
+}
+
+label {
+    width: 100%;
+    max-width: 400px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#people,
+#calculated {
+    margin-top: 15px;
+    text-align: center;
+    color: #222;
+}
+
+/* Mobile devices */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    input,
+    button {
+        font-size: 16px;
+    }
+}
+    </style>
+    <script >
+        function calculateTotal() {
+    // Get values from input fields
+    const endNum = parseFloat(document.getElementById("end").value);
+    const startNum = parseFloat(document.getElementById("star").value);
+    const tarif = parseFloat(document.getElementById("tarif").value);
+    
+    // Validate inputs
+    if (isNaN(endNum) || isNaN(startNum) || isNaN(tarif)) {
+        document.getElementById("calculated").innerHTML = "Please enter valid numbers";
+        return;
+    }
+    
+    // Calculate total
+    const numTickets = endNum - startNum;
+    const total = numTickets * tarif;
+    //display result
+    // Display result
+    document.getElementById("calculated").innerHTML = `Total: ${total.toFixed(2)} Birr`;
+    document.getElementById("people").innerHTML=`Namoota ${numTickets} feeteta`
+    
+    console.log(`Tickets: ${numTickets}, Tarif: ${tarif}, Total: ${total}`);
+}
+    </script>
+</head>
+
+<body>
+    <h2>Your work today</h2>
+    <img src="for.jpg" alt="">
+    <h2 id="people"></h2>
+    <h2 id="calculated"></h2>
+    <label for="name">Lakkofsa irra geese</label>
+    <br>
+    <input type="number" id="end">
+    <br>
+    <label for="name">Lakkofsa irra kaate </label>
+    <br>
+    <input type="number" id="star">
+    <br>
+    <label for="name">Abba birri Meeqaa</label>
+    <br>
+    <input type="number" id="tarif">
+    <br>
+    <button onclick="calculateTotal()">waliigalaan</button>
+    
+</body>
+
+</html>
